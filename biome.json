@@ -12,10 +12,7 @@
       "./.angular",
       "./tsconfig.spec.json",
       "./node_modules",
-      "./eslint.config.js",
-      "./vite.config.ts",
-      "./tsconfig.app.json",
-      "./tsconfig.node.json"
+      "./tsconfig.app.json"
     ]
   },
   "formatter": {
