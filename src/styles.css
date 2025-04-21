@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@import '@fontsource/quicksand/latin.css';
+@import '@fontsource/poppins/latin.css';
 
 :root {
   --color-dark-a0: #000000;
@@ -24,4 +26,31 @@
 body {
   background: var(--color-surface-tonal-a0);
   color: var(--color-light-a0);
+  font-family: 'quicksand', sans-serif;
+}
+
+.text-input,
+.primary-button {
+  background: var(--color-surface-tonal-a10);
+  padding: 15px 30px;
+  border-radius: 3px;
+  outline: none;
+}
+
+.text-input::placeholder {
+  color: var(--color-surface-tonal-a50);
+}
+
+.text-input:focus::placeholder {
+  font-style: italic;
+}
+
+.primary-button {
+  background: var(--color-primary-a20);
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.primary-button:hover {
+  opacity: 0.8;
 }
