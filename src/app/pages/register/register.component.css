@@ -1,7 +1,9 @@
 .register-container {
   display: flex;
   justify-content: center;
-  height: 80vh;
+  width: 100%;
+  max-width: 1200px;
+  transform: translateY(-25%);
 }
 
 section {
