@@ -18,7 +18,7 @@
   --color-surface-tonal-a0: #191624;
   --color-surface-tonal-a10: #2e2b39;
   --color-surface-tonal-a20: #45424e;
-  --color-surface-tonal-a30: #5d5a65;
+  --color-surface-tonal-a30: rgb(93, 90, 101);
   --color-surface-tonal-a40: #76737d;
   --color-surface-tonal-a50: #8f8d96;
 }
