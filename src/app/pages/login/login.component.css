@@ -1,0 +1,64 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+}
+
+section {
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  padding: 10px;
+  flex: 1;
+  align-items: center;
+}
+
+section article {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
+}
+
+section article p {
+  font-size: 0.85em;
+}
+
+section article h1 {
+  font-size: 2em;
+  font-family: 'poppins', sans-serif;
+  font-weight: 600;
+}
+
+section > div {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+section > div > p {
+  font-size: 1.5em;
+  font-weight: 500;
+  font-family: 'poppins', sans-serif;
+}
+
+@media (min-width: 1024px) {
+  section {
+    flex-direction: row;
+    justify-content: center;
+    gap: 46px;
+  }
+
+  section article {
+    text-align: left;
+    gap: 10px;
+    max-width: 40ch;
+  }
+
+  section article h1 {
+    font-size: 3em;
+  }
+}
