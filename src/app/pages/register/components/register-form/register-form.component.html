@@ -1,6 +1,31 @@
-<form action="">
-  <input class="text-input" type="email" placeholder="Ingresa tu email aquí" />
-  <input class="text-input" type="text" placeholder="wasa" />
-  <input class="text-input" type="text" placeholder="wasa" />
+<form (submit)="formSubmit()" [formGroup]="form">
+  <input
+    class="text-input"
+    type="email"
+    placeholder="Ingresa tu email aquí"
+    formControlName="email"
+  />
+
+  <div class="password-input">
+    <input
+      class="text-input"
+      [type]="!inputsVisibles[0] ? 'password' : 'text'"
+      placeholder="Ingresa tu contraseña aquí"
+      formControlName="password"
+    />
+
+    <app-eye-visible [fn]="actVisibles[0]"></app-eye-visible>
+  </div>
+
+  <div class="password-input">
+    <input
+      class="text-input"
+      [type]="!inputsVisibles[1] ? 'password' : 'text'"
+      placeholder="Confirma tu contraseña aquí"
+      formControlName="confirmPassword"
+    />
+    <app-eye-visible [fn]="actVisibles[1]"></app-eye-visible>
+  </div>
+
   <button class="primary-button" type="submit">Crear cuenta</button>
 </form>

@@ -1,0 +1,21 @@
+<form (submit)="formSubmit()" [formGroup]="form">
+  <input
+    class="text-input"
+    type="email"
+    placeholder="Ingresa tu email aquí"
+    formControlName="email"
+  />
+
+  <div class="password-input">
+    <input
+      class="text-input"
+      [type]="!inputsVisibles ? 'password' : 'text'"
+      placeholder="Ingresa tu contraseña aquí"
+      formControlName="password"
+    />
+
+    <app-eye-visible [fn]="actVisibles"></app-eye-visible>
+  </div>
+
+  <button class="primary-button" type="submit">Inicia sesión</button>
+</form>
