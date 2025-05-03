@@ -31,5 +31,10 @@ export const routes: Routes = [
     path: 'canchas',
     loadComponent: () =>
       import('./pages/canchas/canchas.component').then(c=>c.CanchasComponent)
+  },
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./pages/profile/profile.component').then(c => c.ProfileComponent)
   }
 ]

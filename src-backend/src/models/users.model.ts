@@ -1,29 +1,32 @@
-import { PgConnection } from "../services/pgConnection.services"
-import { IDatabase } from "pg-promise";
-import bcrypt from "bcrypt";
+import type { IDatabase } from 'pg-promise'
+import { PgConnection } from '../services/pgConnection.services'
 
 export class UserModel {
-    private db: IDatabase<unknown>;
-  
-    constructor() {
-      this.db = PgConnection.getInstance().connection;
-    }
-  
-    async findByEmail(email: string) {
-      return await this.db.oneOrNone("SELECT * FROM users WHERE email = $1", [email]);
-    }
-  
-    async createUser(email: string, username: string, password: string) {
-      const hashedPassword = await bcrypt.hash(password, 10);
-      return await this.db.one(
-        `INSERT INTO users (email, username, password)
-         VALUES ($1, $2, $3)
-         RETURNING id, email, username`,
-        [email, username, hashedPassword]
-      );
-    }
-  
-    async verifyPassword(plainPassword: string, hashedPassword: string): Promise<boolean> {
-      return await bcrypt.compare(plainPassword, hashedPassword);
-    }
+  private db: IDatabase<unknown>
+
+  constructor() {
+    this.db = PgConnection.getInstance().connection
   }
+
+  async findByEmail(email: string) {
+    return await this.db.oneOrNone(
+      'SELECT * FROM padel.user WHERE email = $1',
+      [email]
+    )
+  }
+
+  async createUser(
+    email: string,
+    name: string,
+    password: string,
+    lastName: string,
+    type: string
+  ) {
+    return await this.db.one(
+      `INSERT INTO padel.user (email, name, user_password, last_name, type)
+         VALUES ($1, $2, $3, $4, $5)
+         RETURNING id, email`,
+      [email, name, password, lastName, type]
+    )
+  }
+}
