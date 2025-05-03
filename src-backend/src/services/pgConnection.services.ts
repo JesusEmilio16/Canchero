@@ -9,7 +9,7 @@ export class PgConnection {
   private constructor() {
     const pgp: IMain = pgPromise({});
 
-    this.connection = pgp(ENVIRONMENT.db_url);
+    this.connection = pgp(ENVIRONMENT.dbUrl);
     this.connection
       .connect()
       .then((obj) => {
