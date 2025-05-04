@@ -8,11 +8,11 @@
 
   /** Theme primary colors */
   --color-primary-a0: #232ade;
-  --color-primary-a10: #5141e3;
-  --color-primary-a20: #6f57e7;
-  --color-primary-a30: #876eeb;
-  --color-primary-a40: #9e85ef;
-  --color-primary-a50: #b39df3;
+  --color-primary-a10: #303bfb;
+  --color-primary-a20: #4f67ff;
+  --color-primary-a30: #718fff;
+  --color-primary-a40: #99b8ff;
+  --color-primary-a50: #bfd4ff;
 
   /** Theme tonal surface colors */
   --color-surface-tonal-a0: #191624;
