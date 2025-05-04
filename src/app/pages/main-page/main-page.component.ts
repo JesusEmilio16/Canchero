@@ -1,5 +1,6 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { HeaderComponent } from '../../components/header/header.component'
+import { UsersService } from '../../services/users.service'
 
 @Component({
   selector: 'app-main-page',
@@ -7,4 +8,6 @@ import { HeaderComponent } from '../../components/header/header.component'
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
-export class MainPageComponent {}
+export class MainPageComponent {
+  usersService = inject(UsersService)
+}

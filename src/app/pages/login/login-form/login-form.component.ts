@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import Swal from 'sweetalert2'
 import { EyeVisibleComponent } from '../../../components/eye-visible/eye-visible.component'
+import { UsersService } from '../../../services/users.service'
 
 @Component({
   selector: 'app-login-form',
@@ -14,6 +15,7 @@ export class LoginFormComponent {
   inputsVisibles = false
   router = inject(Router)
   formBuilder = inject(FormBuilder)
+  usersService = inject(UsersService)
   form = this.formBuilder.group({
     email: ['', Validators.required],
     password: ['', Validators.required]
@@ -36,23 +38,17 @@ export class LoginFormComponent {
         body: JSON.stringify({ email, password })
       })
 
-      if (response.ok) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Bienvenido!',
-          text: 'Has iniciado sesión correctamente',
-          theme: 'dark'
-        })
+      const data = await response.json()
+      this.usersService.login(data.user)
 
-        this.router.navigate(['/'])
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Algo salió mal!',
-          theme: 'dark'
-        })
-      }
+      Swal.fire({
+        icon: 'success',
+        title: 'Bienvenido!',
+        text: 'Has iniciado sesión correctamente',
+        theme: 'dark'
+      })
+
+      this.router.navigate(['/'])
     } catch {
       Swal.fire({
         icon: 'error',
