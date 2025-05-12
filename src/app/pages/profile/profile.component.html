@@ -1,1 +1,56 @@
-<p>profile works!</p>
+<section>
+  <nav>
+    <a routerLink="/profile" routerLinkActive="active">Perfil</a>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Reservas</a>
+  </nav>
+
+  <main>
+    <h1 class="text-2xl font-[poppins] font-semibold">Información de la cuenta</h1>
+
+    <form [formGroup]="form" (submit)="handleSubmit($event)">
+      <div>
+        <div class="col col-1"><p>Imagen de usuario</p></div>
+        <div class="col col-2">
+          <img
+            [src]="
+              usersService.user?.image ||
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ49GlHZ4CVSJmyylVlVbL35UO7xQxopX1PAA&s'
+            "
+          />
+        </div>
+      </div>
+
+      <div>
+        <div class="col col-1"><p>Nombres</p></div>
+        <div class="col col-2">
+          <input type="text" formControlName="name" />
+        </div>
+      </div>
+
+      <div>
+        <div class="col col-1"><p>Apellidos</p></div>
+        <div class="col col-2">
+          <input type="text" formControlName="lastName" />
+        </div>
+      </div>
+
+      <div>
+        <div class="col col-1"><p>Correo de usuario</p></div>
+        <div class="col col-2">
+          <input type="text" formControlName="email" />
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <button class="primary-button" type="submit">Guardar cambios</button>
+        <button
+          (click)="restore()"
+          type="button"
+          class="primary-button btn-del"
+        >
+          Descartar cambios
+        </button>
+      </div>
+    </form>
+  </main>
+</section>
