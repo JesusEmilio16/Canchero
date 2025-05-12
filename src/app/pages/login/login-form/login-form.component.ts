@@ -30,7 +30,6 @@ export class LoginFormComponent {
   async formSubmit() {
     try {
       const { email, password } = this.form.value
-
       const response = await fetch('http://localhost:8000/auth/login', {
         method: 'POST',
         headers: {

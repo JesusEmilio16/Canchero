@@ -29,4 +29,24 @@ export class UserModel {
       [email, name, password, lastName, type]
     )
   }
+
+  async updateUser(
+    id: number,
+    email: string,
+    name: string,
+    lastName: string,
+    type: string
+  ) {
+    await this.db.result(
+      `UPDATE padel.user
+         SET email = $2, name = $3, last_name = $4, type = $5
+         WHERE id = $1`,
+      [id, email, name, lastName, type]
+    )
+
+    return await this.db.oneOrNone(
+      'SELECT * FROM padel.user WHERE email = $1',
+      [email]
+    )
+  }
 }
