@@ -51,5 +51,10 @@ export const routes: Routes = [
     path:'tarjeta-owner',
     loadComponent:()=>
       import('./pages/tarjeta-owner/tarjeta-owner.component').then(c=>c.TarjetaOwnerComponent)
+  },
+  {
+    path:'reservas',
+    loadComponent:()=>
+      import('./pages/reservas/reservas.component').then(c=>c.ReservasComponent)
   }
 ]

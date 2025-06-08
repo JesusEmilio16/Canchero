@@ -1,0 +1,17 @@
+<app-header />
+<div class="max-w-3xl w-full mx-auto flex flex-col gap-3 ">
+    <div class="justify-center w-full items-center flex mt-3">
+        <a href="" routerLink="/profile">Perfil</a>
+    </div>
+    <div class=" bg-gray-400 w-full h-full break-words">
+        aca va los de si es usuario
+        @for (item of items; track $index) {
+            <app-calendar />
+        }
+
+        aca va lo de si es usuario
+        @for (item of items; track $index) {
+            <app-tarjeta-owner />
+        }
+    </div>
+</div>
