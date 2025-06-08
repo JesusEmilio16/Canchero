@@ -38,7 +38,7 @@ export const routes: Routes = [
       import('./pages/profile/profile.component').then(c => c.ProfileComponent)
   },
   {
-    path: 'tarjeta',
+    path: 'tarjeta-reservavation',
     loadComponent: ()=>
       import('./pages/canchas/tarjeta/tarjeta.component').then(c => c.TarjetaComponent)
   },
@@ -46,5 +46,10 @@ export const routes: Routes = [
     path:'calendar',
     loadComponent:()=>
       import('./pages/calendar/calendar.component').then(c=>c.CalendarComponent)
+  },
+  {
+    path:'tarjeta-owner',
+    loadComponent:()=>
+      import('./pages/tarjeta-owner/tarjeta-owner.component').then(c=>c.TarjetaOwnerComponent)
   }
 ]
