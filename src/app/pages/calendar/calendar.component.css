@@ -1,0 +1,26 @@
+section {
+  min-height: 100dvh;
+  min-height: 100vh;
+  display: flex;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: auto;
+  background: var(--color-surface-tonal-a10);
+  padding: 10px;
+}
+
+nav a {
+  background: var(--color-surface-tonal-a20);
+  width: 100%;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+nav .active {
+  background: var(--color-surface-tonal-a30);
+}

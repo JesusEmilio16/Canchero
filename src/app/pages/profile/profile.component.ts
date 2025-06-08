@@ -1,10 +1,10 @@
+import { HttpClient } from '@angular/common/http'
 import { Component, inject } from '@angular/core'
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms'
-import Swal from 'sweetalert2'
-import { UsersService } from '../../services/users.service'
 import { RouterLink, RouterLinkActive } from '@angular/router'
-import { HttpClient } from '@angular/common/http'
+import Swal from 'sweetalert2'
 import type { User } from '../../interfaces/user'
+import { UsersService } from '../../services/users.service'
 
 @Component({
   selector: 'app-profile',

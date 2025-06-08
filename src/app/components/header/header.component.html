@@ -31,8 +31,12 @@
       <a href="" routerLink="/canchas">Canchas</a>
     </div>
     <div class="flex gap-4 justify-center items-center">
-      <a href="" routerLink="/login">Iniciar Sesión</a>
-      <a href="" routerLink="/profile">Perfil</a>
+      @if (userService.user) {
+        <a href="" routerLink="/profile">Perfil</a>
+      } @else {
+        <a href="" routerLink="/login">Iniciar Sesión</a>
+      }
+      
       <a href="" class="bg-[var(--color-primary-a20)] p-1 px-6 rounded-2xl"
         >Contacto</a
       >

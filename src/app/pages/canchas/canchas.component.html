@@ -1,35 +1,16 @@
 <app-header />
 <div class=" max-w-screen-xl w-full mx-auto ">
-    <div class=" p-5 flex flex-col items-center  gap-3">
-        <div class=" flex gap-4 justify-between p-4  bg-[var(--color-surface-tonal-a30)] rounded-sm max-w-3xl w-full">
-            <div class=" flex flex-col gap-1 items-center">
-                <p>Hora</p>
-                <select class=" p-1 px-3 border-1 rounded-lg bg-[var(--color-surface-tonal-a30)]">
-                    <option value="8pm">7 am</option>
-                    <option value="8pm">8 am</option>
-                    <option value="8pm">9 am</option>
-                    <option value="8pm">10 am</option>
-                    <option value="8pm">11 am</option>
-                    <option value="8pm">12 pm</option>
-                    <option value="8pm">1 pm</option>
-                    <option value="8pm">2 pm</option>
-                    <option value="8pm">3 pm</option>
-                    <option value="8pm">4 pm</option>
-                    <option value="8pm">5 pm</option>
-                    <option value="8pm">6 pm</option>
-                    <option value="8pm">7 pm</option>
-                    <option value="8pm">8 pm</option>
-                    <option value="8pm">9 pm</option>
-                </select>
-            </div>
+    <div class=" p-5 flex flex-col items-center gap-3">
+        <div class=" flex gap-4 justify-center p-4 rounded-sm max-w-3xl w-full">
             <div class="flex flex-col items-center gap-1">
-                <p>Fecha</p>
-                <input type="date" class=" bg-[var(--color-surface-tonal-a30)] border-1 p-1 px-3 rounded-lg">
-            </div>
-            <div class=" flex items-center">
-                <button class=" bg-[var(--color-primary-a20)]  rounded-full p-3 px-12"> Buscar</button>
+                <p>Fecha y hora</p>
+                <input (input)="getDatetime($event)" type="datetime-local" class=" bg-[var(--color-surface-tonal-a30)] border-1 p-1 px-3 rounded-lg">
             </div>
         </div>
-        <div class=" bg-gray-400 w-full h-full">1</div>
+        <div class="flex flex-col gap-4 w-full max-w-3xl">
+            @for (court of courts; track $index) {
+                <app-tarjeta [court]="court" [datetime]="selectedDate"></app-tarjeta>
+            }
+        </div>
     </div>
 </div>

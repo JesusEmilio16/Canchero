@@ -1,19 +1,41 @@
-<div
-  class="flex bg-[var(--color-surface-tonal-a10)] p-2 items-center rounded-lg"
->
-  <div class="flex gap-3 items-center justify-between w-full">
-    <div class="flex gap-7 items-center ">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/8/89/Saguinus_oedipus_%28Linnaeus%2C_1758%29.jpg"
-        alt=""
-        class="w-40 h-30 rounded-md"
-      />
-      <div>
-        <p>Nombre cancha: </p>
-        <p>Fecha: </p>
-        <p>Hora: </p>
-        <p>Owner: </p>
+<section>
+  <nav>
+    <a
+      routerLink="/profile"
+      [routerLinkActiveOptions]="{ exact: true }"
+      routerLinkActive="active"
+      >Perfil</a
+    >
+    <a
+      [routerLink]="
+        usersService.user?.type === 'u' ? '/calendar' : '/tarjeta-owner'
+      "
+      routerLinkActive="active"
+      >Reservas</a
+    >
+  </nav>
+
+  <main class="p-4 flex flex-col gap-4 flex-1">
+  @for (court of courts; track $index) {
+    <div
+    class="flex bg-[var(--color-surface-tonal-a10)] p-2 items-center rounded-lg w-full"
+  >
+    <div class="flex gap-3 items-center justify-between w-full">
+      <div class="flex gap-7 items-center">
+        <img
+          [src]= "court.img1"
+          alt=""
+          class="w-40 h-30 rounded-md"
+        />
+        <div>
+          <p>{{court.name}}</p>
+          <p>{{court.reservation_datetime.split('T')[0]}}</p>
+          <p>{{court.reservation_datetime.split('T')[1]}}</p>
+          <p>{{court.uName + ' ' + court.last_name}}</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+}
+</main>
+</section>

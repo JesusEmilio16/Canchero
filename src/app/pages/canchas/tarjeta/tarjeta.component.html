@@ -4,16 +4,22 @@
   <div class="flex gap-3 items-center justify-between w-full">
     <div class="flex gap-3 items-center ">
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/8/89/Saguinus_oedipus_%28Linnaeus%2C_1758%29.jpg"
+        [src]="court.img1"
         alt=""
         class="w-40 h-30 rounded-md"
       />
-      <div>
-        <p>Nombre cancha</p>
-        <p>Fecha</p>
-        <p>Hora</p>
+      <div class="flex flex-col gap-1">
+        <p class="font-semibold text-lg">{{court.name}}</p>
+        <p>{{court.description}}</p>
+        <p class="text-sm">{{court.price}}</p>
+        @if (court.time_end) {
+          <p class="text-sm italic">Hasta las {{court.time_end}}</p>
+        }
       </div>
     </div>
-    <button class=" bg-[var(--color-primary-a20)]  rounded-full p-3 px-12 mr-15 cursor-pointer"> Reservar</button>
+    
+    @if(court.time_end) {
+      <button (click)="reservation()" class=" bg-[var(--color-primary-a20)]  rounded-full p-3 px-12 mr-15 cursor-pointer">Reservar</button>
+    }
   </div>
 </div>
