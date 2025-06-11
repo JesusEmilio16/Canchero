@@ -11,6 +11,7 @@
       <div class="flex flex-col gap-1">
         <p class="font-semibold text-lg">{{court.name}}</p>
         <p>{{court.description}}</p>
+        <p>Dirección: {{court.address}}</p>
         <p class="text-sm">{{court.price}}</p>
         @if (court.time_end) {
           <p class="text-sm italic">Hasta las {{court.time_end}}</p>

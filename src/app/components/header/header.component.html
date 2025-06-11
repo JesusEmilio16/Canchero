@@ -33,11 +33,12 @@
     <div class="flex gap-4 justify-center items-center">
       @if (userService.user) {
         <a href="" routerLink="/profile">Perfil</a>
+        <button class="underline text-red-200 px-6 p-2 rounded cursor-pointer" (click)="quit()">Cerrar sesión</button>
       } @else {
         <a href="" routerLink="/login">Iniciar Sesión</a>
       }
       
-      <a href="" class="bg-[var(--color-primary-a20)] p-1 px-6 rounded-2xl"
+      <a href="" class="bg-[var(--color-primary-a20)] p-2 px-6 rounded"
         >Contacto</a
       >
     </div>

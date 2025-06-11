@@ -57,6 +57,8 @@ export class ProfileComponent {
             text: 'Has guardado los cambios correctamente',
             theme: 'dark'
           })
+
+          window.localStorage.setItem('user', JSON.stringify(data))
         },
         error: () => {
           Swal.fire({
@@ -67,23 +69,5 @@ export class ProfileComponent {
           })
         }
       })
-  }
-
-  async restore() {
-    const confirm = await Swal.fire({
-      title: '¿Estás seguro?',
-      text: '¿Quieres restaurar los valores originales?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, restaurar',
-      cancelButtonText: 'Cancelar',
-      theme: 'dark'
-    })
-
-    if (!confirm.isConfirmed) {
-      return
-    }
-
-    this.form.reset()
   }
 }

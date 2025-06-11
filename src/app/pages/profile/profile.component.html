@@ -5,17 +5,19 @@
   </nav>
 
   <main>
-    <h1 class="text-2xl font-[poppins] font-semibold">Información de la cuenta</h1>
+    <div class="flex gap-4 items-center">
+      <a href="" routerLink="/" class="cursor-pointer transition-all hover:-translate-x-1.5">
+        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>
+      </a>
+      <h1 class="text-2xl font-[poppins] font-semibold">Información de la cuenta</h1>
+    </div>
 
     <form [formGroup]="form" (submit)="handleSubmit($event)">
       <div>
         <div class="col col-1"><p>Imagen de usuario</p></div>
         <div class="col col-2">
           <img
-            [src]="
-              usersService.user?.image ||
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ49GlHZ4CVSJmyylVlVbL35UO7xQxopX1PAA&s'
-            "
+            src="/profile.jpg"
           />
         </div>
       </div>
@@ -42,14 +44,7 @@
       </div>
 
       <div class="flex gap-4">
-        <button class="primary-button" type="submit">Guardar cambios</button>
-        <button
-          (click)="restore()"
-          type="button"
-          class="primary-button btn-del"
-        >
-          Descartar cambios
-        </button>
+        <button class="primary-button max-w-lg mx-auto" type="submit">Guardar cambios</button>
       </div>
     </form>
   </main>

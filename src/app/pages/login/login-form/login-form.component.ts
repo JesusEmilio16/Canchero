@@ -5,10 +5,9 @@ import Swal from 'sweetalert2'
 import { EyeVisibleComponent } from '../../../components/eye-visible/eye-visible.component'
 import { UsersService } from '../../../services/users.service'
 
-
 @Component({
   selector: 'app-login-form',
-  imports: [EyeVisibleComponent, ReactiveFormsModule, ],
+  imports: [EyeVisibleComponent, ReactiveFormsModule],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css'
 })
@@ -39,7 +38,13 @@ export class LoginFormComponent {
       })
 
       const data = await response.json()
+
+      if (!data.user) {
+        throw new Error(data.message)
+      }
+
       this.usersService.login(data.user)
+      localStorage.setItem('user', JSON.stringify(data.user))
 
       Swal.fire({
         icon: 'success',

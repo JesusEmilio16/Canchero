@@ -28,8 +28,7 @@ export const login = async (req: Request, res: Response) => {
         password: user.user_password
       }
     })
-  } catch (error) {
-    console.error('Login error:', error)
+  } catch {
     res
       .status(500)
       .json({ success: false, message: 'Error interno del servidor' })
@@ -41,14 +40,14 @@ export const register = async (req: Request, res: Response) => {
   const userModel = new UserModel()
 
   try {
-    const newUser = await userModel.createUser(
+    const user = await userModel.createUser(
       email,
       name,
       password,
       lastName,
       type
     )
-    if (!newUser) {
+    if (!user) {
       res
         .status(404)
         .json({ success: false, message: 'No se ha podido crear el usuario' })
@@ -58,13 +57,15 @@ export const register = async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       user: {
-        id: newUser.id,
-        email: newUser.email,
-        username: newUser.username
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        lastName: user.last_name,
+        type: user.type,
+        password: user.user_password
       }
     })
-  } catch (error) {
-    console.error('Register error:', error)
+  } catch {
     res
       .status(500)
       .json({ success: false, message: 'Error interno del servidor' })

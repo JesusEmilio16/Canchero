@@ -17,7 +17,7 @@ export class RegisterFormComponent {
   form = this.formBuilder.group({
     name: ['', Validators.required],
     lastName: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required]
   })
@@ -34,6 +34,28 @@ export class RegisterFormComponent {
     try {
       const { email, password, confirmPassword, name, lastName } =
         this.form.value
+
+      if (this.form.get('email')?.invalid) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'El correo electrónico no es válido',
+          theme: 'dark'
+        })
+
+        return
+      }
+
+      if (this.form.invalid) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Todos los campos son obligatorios',
+          theme: 'dark'
+        })
+
+        return
+      }
 
       if (password !== confirmPassword) {
         Swal.fire({

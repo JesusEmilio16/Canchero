@@ -1,5 +1,5 @@
-import { PgConnection } from '../services/pgConnection.services'
 import type { IDatabase } from 'pg-promise'
+import { PgConnection } from '../services/pgConnection.services'
 
 export class UserModel {
   private db: IDatabase<unknown>

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core'
-import { RouterLink } from '@angular/router'
+import { Router, RouterLink } from '@angular/router'
 import { UsersService } from '../../services/users.service'
 @Component({
   selector: 'app-header',
@@ -9,4 +9,10 @@ import { UsersService } from '../../services/users.service'
 })
 export class HeaderComponent {
   userService = inject(UsersService)
+  router = inject(Router)
+
+  quit() {
+    this.userService.logout()
+    this.router.navigate(['/login'])
+  }
 }

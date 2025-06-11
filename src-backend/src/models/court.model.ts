@@ -39,12 +39,12 @@ export class CourtModel {
 
   async getReservationByUserId(userId: string) {
     return await this.db.query(
-      `SELECT *, padel.user.name as "uName", padel.court.name as name
+      `SELECT *, padel.court.name as name, padel.user.name as "uName", padel.user.last_name as "last_name"
       FROM padel.reservation
       INNER JOIN padel.court
       ON padel.reservation.court_id = padel.court.id
       INNER JOIN padel.user
-      ON padel.reservation.user_id = padel.user.id
+      ON padel.reservation.owner_id = padel.user.id
       WHERE padel.reservation.user_id = $1
       `,
       [userId]

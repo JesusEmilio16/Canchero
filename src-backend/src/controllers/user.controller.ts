@@ -5,12 +5,15 @@ export async function updateUser(req: Request, res: Response) {
   const { id, email, name, lastName, type } = req.body
   const userModel = new UserModel()
   try {
-    const result = await userModel.updateUser(id, email, name, lastName, type)
-    if (result.rowCount === 0) {
-      res.status(404).json({ success: false, message: 'Usuario no encontrado' })
-      return
-    }
-    res.status(200).json(result)
+    const user = await userModel.updateUser(id, email, name, lastName, type)
+    res.status(200).json({
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      lastName: user.last_name,
+      type: user.type,
+      password: user.user_password
+    })
   } catch {
     res
       .status(500)

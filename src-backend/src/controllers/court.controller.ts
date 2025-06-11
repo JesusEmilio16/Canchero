@@ -43,7 +43,6 @@ export async function createReservation(req: Request, res: Response) {
     )
     res.status(200).json(result)
   } catch (e) {
-    console.log(e)
     res
       .status(500)
       .json({ success: false, message: 'Error interno del servidor', e })
