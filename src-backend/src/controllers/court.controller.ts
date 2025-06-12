@@ -53,8 +53,20 @@ export async function getReservationByUserId(req: Request, res: Response) {
   const { userId } = req.params
   const courtModel = new CourtModel()
   try {
-    const result = await courtModel.getReservationByUserId(userId)
-    res.status(200).json(result)
+    const result = (await courtModel.getReservationByUserId(userId)) as {
+      reservation_datetime: string
+    }[]
+
+    res.status(200).json(
+      result.map(reservation => ({
+        ...reservation,
+        reservation_datetime: new Date(
+          reservation.reservation_datetime
+        ).toLocaleString('es-CO', {
+          timeZone: 'America/Bogota'
+        })
+      }))
+    )
   } catch (e) {
     res
       .status(500)
@@ -66,8 +78,20 @@ export async function getReservationByOwnerId(req: Request, res: Response) {
   const { ownerId } = req.params
   const courtModel = new CourtModel()
   try {
-    const result = await courtModel.getReservationByOwnerId(ownerId)
-    res.status(200).json(result)
+    const result = (await courtModel.getReservationByOwnerId(ownerId)) as {
+      reservation_datetime: string
+    }[]
+
+    res.status(200).json(
+      result.map(reservation => ({
+        ...reservation,
+        reservation_datetime: new Date(
+          reservation.reservation_datetime
+        ).toLocaleString('es-CO', {
+          timeZone: 'America/Bogota'
+        })
+      }))
+    )
   } catch (e) {
     res
       .status(500)

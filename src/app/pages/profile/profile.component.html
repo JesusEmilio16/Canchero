@@ -1,7 +1,10 @@
 <section>
   <nav>
     <a routerLink="/profile" routerLinkActive="active">Perfil</a>
-    <a [routerLink]="usersService.user?.type === 'u' ? '/calendar' : '/tarjeta-owner'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Reservas</a>
+    <a routerLink="/calendar" routerLinkActive="active" >Reservas</a>
+    @if(usersService.user?.type === 'a'){
+      <a routerLink="/tarjeta-owner" routerLinkActive="active">Me reservaron</a>
+    }
   </nav>
 
   <main>

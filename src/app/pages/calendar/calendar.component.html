@@ -2,17 +2,18 @@
   <nav>
     <a
       routerLink="/profile"
-      [routerLinkActiveOptions]="{ exact: true }"
       routerLinkActive="active"
       >Perfil</a
     >
     <a
-      [routerLink]="
-        usersService.user?.type === 'u' ? '/calendar' : '/tarjeta-owner'
-      "
+      routerLink="/calendar"
       routerLinkActive="active"
       >Reservas</a
     >
+
+    @if(usersService.user?.type === 'a'){
+      <a routerLink="/tarjeta-owner" routerLinkActive="active">Me reservaron</a>
+    }
   </nav>
 
   <main class="p-4 flex flex-col gap-4 flex-1">
@@ -44,8 +45,7 @@
         <div>
           <p class="font-semibold text-lg">{{court.name}}</p>
           <p>{{court.address}}</p>
-          <p>{{court.reservation_datetime.split('T')[0]}}</p>
-          <p>{{court.reservation_datetime.split('T')[1].substring(0, 8)}} hrs</p>
+          <p>{{court.reservation_datetime}}</p>
           <p>{{court.uName + ' ' + court.last_name}}</p>
         </div>
       </div>
